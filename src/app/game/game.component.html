@@ -1,0 +1,52 @@
+<div class="main-container container">
+    <h1 class="mat-display-2" style="margin-top: 2%;">Tic-Tac-Toe</h1>
+
+    <div class="field">
+        <p class="current-status mat-display-1">Start the game on the button</p>
+    </div> <!-- End Field -->
+
+    <div *ngIf="this.game.gameStatus === 0" class="field d-flex justify-content-center" style="width: 100%;">
+        <button (click)="startGame()" mat-raised-button color="primary" class="start-game-button">Start Game Now! </button>
+    </div> <!-- End Field -->
+
+    <div *ngIf="this.game.gameStatus === 1" class="gameboard">
+
+
+
+        <div class="gamefield container-fluid">
+
+            <div class="row">
+                <div (click)="clickSubfield($event)" position="0" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="1" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="2" class="subfield col-4"> </div>
+            </div> <!-- End Row -->
+
+            <div class="row">
+                <div (click)="clickSubfield($event)" position="3" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="4" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="5" class="subfield col-4"> </div>
+            </div> <!-- End Row -->
+
+            <div class="row">
+                <div (click)="clickSubfield($event)" position="6" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="7" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="8" class="subfield col-4"> </div>
+            </div> <!-- End Row -->
+
+            <div style="margin-top: 20%;" class="row">
+                <div class="players player-one col-6">
+                    <p class="mat-body-2">Player 1</p>
+                </div>
+
+                <div class="players player-two col-6">
+                    <p class="mat-body-2">Player 2</p>
+                </div>
+            </div> <!-- End Row -->
+
+        </div> <!-- End Container fluid -->
+
+        
+    </div> <!-- End Game Board -->
+
+
+</div> <!-- End Main -->
