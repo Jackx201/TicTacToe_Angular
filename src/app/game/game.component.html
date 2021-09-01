@@ -1,24 +1,26 @@
 <div class="main-container container">
-    <h1 class="mat-display-2" style="margin-top: 2%;">Tic-Tac-Toe</h1>
+    <h1 class="mat-display-3" style="margin-top: 2%; font-family: Bahnschrift SemiBold, sans-serif;">Tic-Tac-Toe</h1>
 
     <div class="field">
-        <p class="current-status mat-display-1">Start the game on the button</p>
+        <p class="current-status mat-display-1" style="font-family: Berlin Sans FB;">Start the game on the button</p>
     </div> <!-- End Field -->
 
     <div *ngIf="this.game.gameStatus === 0" class="field d-flex justify-content-center" style="width: 100%;">
         <button (click)="startGame()" mat-raised-button color="primary" class="start-game-button">Start Game Now! </button>
     </div> <!-- End Field -->
 
-    <div *ngIf="this.game.gameStatus === 1" class="gameboard">
-
-
+    <div *ngIf="this.game.gameStatus === 1" class="gameboard fade-in">
 
         <div class="gamefield container-fluid">
+            
+            <div *ngIf="this.game.enabled === false" class="row fade-in">
+                <p>This field has already been used</p>
+            </div>
 
             <div class="row">
-                <div (click)="clickSubfield($event)" position="0" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="0" class="subfield col-4" style="border-top-left-radius: 25px;"> </div>
                 <div (click)="clickSubfield($event)" position="1" class="subfield col-4"> </div>
-                <div (click)="clickSubfield($event)" position="2" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="2" class="subfield col-4" style="border-top-right-radius: 25px;"> </div>
             </div> <!-- End Row -->
 
             <div class="row">
@@ -28,9 +30,9 @@
             </div> <!-- End Row -->
 
             <div class="row">
-                <div (click)="clickSubfield($event)" position="6" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="6" class="subfield col-4" style="border-bottom-left-radius: 25px;"> </div>
                 <div (click)="clickSubfield($event)" position="7" class="subfield col-4"> </div>
-                <div (click)="clickSubfield($event)" position="8" class="subfield col-4"> </div>
+                <div (click)="clickSubfield($event)" position="8" class="subfield col-4" style="border-bottom-right-radius: 25px;"> </div>
             </div> <!-- End Row -->
 
             <div style="margin-top: 20%;" class="row">
@@ -42,11 +44,7 @@
                     <p class="mat-body-2">Player 2</p>
                 </div>
             </div> <!-- End Row -->
-
         </div> <!-- End Container fluid -->
-
-        
     </div> <!-- End Game Board -->
-
-
 </div> <!-- End Main -->
+

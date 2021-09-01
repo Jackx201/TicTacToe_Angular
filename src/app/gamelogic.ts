@@ -1,6 +1,8 @@
 import { Status  } from "./gamestatus";
 export class Gamelogic {
 
+    enabled: boolean = true;
+
     gameField: Array<number> = [];
 
     currentPlayer!: number;
@@ -16,6 +18,7 @@ export class Gamelogic {
         [0,0,1,0,0,1,0,0,1],
         [1,0,0,0,1,0,0,0,1],
         [0,0,1,0,1,0,1,0,0],
+        [1,0,0,1,1,1,0,0,0],
     ];
 
     player2wins: Array<Array<number>> = [
@@ -39,7 +42,6 @@ export class Gamelogic {
     {
         this.gameField = [0,0,0,0,0,0,0,0,0];
         this.currentPlayer = this.randomPlayerStart();
-        console.log(this.currentPlayer);
         this.gameStatus = Status.START;
     }
 
@@ -51,7 +53,15 @@ export class Gamelogic {
 
     setField(position: number, value: number): void
     {
-        this.gameField[position] = value;
+        if(this.gameField[position] === 0)
+        {
+            this.gameField[position] = value;
+            this.enabled = true;
+        } else {
+            this.enabled = false;
+        }
+
+        
     }
 
     getPlayerColorClass(): string
@@ -69,7 +79,6 @@ export class Gamelogic {
 
     async checkWinner(): Promise<boolean>
     {
-        console.log(this.currentPlayer);
         let isWinner = false;
 
         const checkarray = ( this.currentPlayer === 1 ) ? this.player1wins : this.player2wins;
@@ -95,7 +104,6 @@ export class Gamelogic {
 
         if(isWinner)
         {
-            console.log("GAME SET!");
             this.endGame();
             return true;
         } else {
@@ -118,7 +126,6 @@ export class Gamelogic {
 
         if(isFull)
         {
-            console.log("GAME!");
             this.endGame();
             return true;
         } else {

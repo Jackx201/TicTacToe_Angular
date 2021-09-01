@@ -29,11 +29,14 @@
                 cursor: pointer;
                 height: 100px;
                 width: 100px;
-                border: 1px solid white;
+                border: 5px solid white;
 
-                row:hover {
-                    color: orange;
-                  }
+                -webkit-transition: background-color 0.3s ease-out;
+                -moz-transition: background-color 0.3s ease-out;
+                -o-transition: background-color 0.3s ease-out;
+                transition: background-color 0.3s ease-out;
+
+  
 
                 &.player-one {
                     background: #F3C677;
@@ -44,4 +47,21 @@
             }
         }
     }
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

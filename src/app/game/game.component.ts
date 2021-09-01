@@ -29,8 +29,13 @@ export class GameComponent implements OnInit {
       const position = subfield.currentTarget.getAttribute('position');
       const information = document.querySelector('.current-status');
       this.game.setField(position, this.game.currentPlayer);
-      const color = this.game.getPlayerColorClass();
-      subfield.currentTarget.classList.add(color);
+      let enabled = this.game.enabled;
+      if(enabled)
+      {
+        const color = this.game.getPlayerColorClass();
+        subfield.currentTarget.classList.add(color);
+      
+
 
        this.game.checkWinner().then( (end: boolean) => {
         if (this.game.gameStatus === 0 && end){
@@ -55,6 +60,7 @@ export class GameComponent implements OnInit {
       if(this.game.gameStatus === 1){
         const currentTurn = 'Current turn: Player ' + this.game.currentPlayer;
         information!.innerHTML = currentTurn;
+      }
       }
     }
   }
